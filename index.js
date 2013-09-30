@@ -5,6 +5,7 @@ var filterEE = require('./lib/filter-ee');
 var inherits = require('util').inherits;
 var Doc = require('crdt').Doc;
 var uuid = require('node-uuid').v4;
+var Match = require('./lib/match');
 
 module.exports = Registry;
 
@@ -45,10 +46,11 @@ Registry.prototype.add = function(meta, run) {
 
 Registry.prototype.get = function(match, fn) {
   var local = this.set.toJSON();
+  match = Match(match);
 
   for (var i = 0; i < local.length; i++) {
     var service = local[i];
-    if (match(service.meta, service)) {
+    if (match(service)) {
       process.nextTick(function() {
         fn(service.run());
       });
@@ -57,7 +59,7 @@ Registry.prototype.get = function(match, fn) {
   }
 
   filterEE(this.set, 'add', function(row) {
-    return match(row.state.meta, row.state);
+    return match(row.state);
   }, function(row) {
     fn(row.state.run());
   });
@@ -65,8 +67,10 @@ Registry.prototype.get = function(match, fn) {
 
 Registry.prototype.remove = function(match) {
   var self = this;
+  match = Match(match);
+
   self.set.each(function(service) {
-    if (match(service.meta, service)) {
+    if (match(service)) {
       self.doc.rm(service.id);
     }
   });

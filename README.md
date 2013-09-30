@@ -32,8 +32,8 @@ as.pipe(b.createStream()).pipe(as);
 
 // pipe a's stdin into b's stdout
 
-b.get(function(n) { return n == 'stdin' }, function(stdin) {
-  a.get(function(n) { return n == 'stdout' }, function(stdout) {
+b.get('stdin', function(stdin) {
+  a.get('stdout', function(stdout) {
     stdin.pipe(stdout);
   });
 });

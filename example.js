@@ -16,8 +16,8 @@ b.add('stdout', function() {
 var as = a.createStream();
 as.pipe(b.createStream()).pipe(as);
 
-b.get(function(n) { return n == 'stdin' }, function(stdin) {
-  a.get(function(n) { return n == 'stdout' }, function(stdout) {
+b.get('stdin', function(stdin) {
+  a.get('stdout', function(stdout) {
     stdin.pipe(stdout);
   });
 });
