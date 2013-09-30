@@ -1,0 +1,31 @@
+{
+  "name": "a-registry",
+  "description": "A registry",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/juliangruber/a-registry.git"
+  },
+  "homepage": "https://github.com/juliangruber/a-registry",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "dependencies": {
+    "node-uuid": "~1.4.1",
+    "crdt": "~3.5.4",
+    "mux-demux": "~3.7.8"
+  },
+  "devDependencies": {
+    "tape": "*"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": {
+    "name": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com"
+  },
+  "license": "MIT"
+}
