@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "node-uuid": "~1.4.1",
-    "crdt": "~3.5.4",
+    "crdt": "~3.6.4",
     "mux-demux": "~3.7.8"
   },
   "devDependencies": {
