@@ -17,7 +17,7 @@
     "mux-demux": "~3.7.8"
   },
   "devDependencies": {
-    "tape": "*"
+    "tape": ">=4.6.3"
   },
   "keywords": [
     ""
